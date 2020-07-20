@@ -1,0 +1,139 @@
+<app-header *ngIf="!projectActive"></app-header>
+<main>
+  <div class="container-fluid">
+    <div *ngIf="!collapsed" class="main_title">
+      <h1>{{title}} </h1>
+    </div>
+    <div [ngClass]="{'projector': projectActive}" class="main_wrapper">
+      <aside [ngClass]="{'collapsed': collapsed}">
+        <nav *ngIf="!collapsed">
+          <ul>
+            <li class="drop">
+              <div class="link">
+									<span class="icon">
+										<img alt="" src="assets/img/icons/list_icon.png">
+									</span>
+                <a href="">Список карт</a>
+              </div>
+            </li>
+            <li class="layers drop">
+              <div class="link">
+									<span class="icon">
+										<img alt="" src="assets/img/icons/layer_icon.png">
+									</span>
+                <a href="">Слои</a>
+              </div>
+              <ul class="dropdown">
+                <li *ngFor="let layer of layers">
+                  <div class="input_group">
+                    <input [(ngModel)]="layer.checked" id="{{layer.name}}" type="checkbox">
+                    <label for="{{layer.name}}">{{layer.name}}</label>
+                  </div>
+                </li>
+              </ul>
+            </li>
+            <li (click)="projector($event)" [ngClass]="{'active': projectActive}">
+								<span class="icon">
+									<img alt="" src="assets/img/icons/legend_icon.png">
+								</span>
+              <a href="">Легенда карты</a>
+            </li>
+<!--            <li (click)="projector($event)" [ngClass]="{'active': projectActive}">-->
+<!--								<span class="icon">-->
+<!--									<img alt="" src="assets/img/icons/proektor_icon.png">-->
+<!--								</span>-->
+<!--              <a href="">Проектор</a>-->
+<!--            </li>-->
+            <li>
+								<span class="icon">
+									<img alt="" src="assets/img/icons/info_icon.png">
+								</span>
+              <a href="">Информация</a>
+            </li>
+            <li (click)="edit($event)" [ngClass]="{'active': isEdit}">
+								<span class="icon">
+									<img alt="" src="assets/img/icons/edit_icon.png">
+								</span>
+              <a href="">Редактировать</a>
+            </li>
+            <li (click)="collapse($event)">
+								<span class="icon">
+									<img alt="" src="assets/img/icons/hide_icon.png">
+								</span>
+              <a href="">Свернуть</a>
+            </li>
+          </ul>
+        </nav>
+        <nav *ngIf="collapsed">
+          <ul>
+            <li class="drop">
+              <div class="link">
+									<span class="icon">
+										<img alt="" src="assets/img/icons/list_icon.png">
+									</span>
+              </div>
+            </li>
+            <li class="layers drop">
+              <div class="link">
+									<span class="icon">
+										<img alt="" src="assets/img/icons/layer_icon.png">
+									</span>
+              </div>
+            </li>
+            <li (click)="projector($event)" [ngClass]="{'active': projectActive}">
+								<span class="icon">
+									<img alt="" src="assets/img/icons/legend_icon.png">
+								</span>
+            </li>
+            <li (click)="projector($event)" [ngClass]="{'active': projectActive}">
+								<span class="icon">
+									<img alt="" src="assets/img/icons/proektor_icon.png">
+								</span>
+            </li>
+            <li>
+								<span class="icon">
+									<img alt="" src="assets/img/icons/info_icon.png">
+								</span>
+            </li>
+            <li [ngClass]="{'active': isEdit}" (click)="edit($event)">
+								<span class="icon">
+									<img alt="" src="assets/img/icons/edit_icon.png">
+								</span>
+            </li>
+            <li (click)="collapse($event)">
+								<span class="icon">
+									<img alt="" src="assets/img/icons/show_icon.png">
+								</span>
+            </li>
+          </ul>
+        </nav>
+      </aside>
+      <section [ngClass]="{'projector': projectActive}" class="map">
+        <pinch-zoom [backgroundColor]="'transparent'" [disablePan]="true"
+                    [transition-duration]=500>
+          <figure class="mainMap">
+            <img alt="" src="assets/img/Россия/Основа.png">
+          </figure>
+          <figure [ngClass]="{'show': isEdit}" class=" canvas">
+            <image-drawing
+              (save)="save($event)"
+              [drawingSizes]="{'medium': 10, 'small': 5}"
+              enableTooltip="false"
+              src="assets/img/Россия/Основа.png"></image-drawing>
+          </figure>
+          <ng-container *ngFor="let layer of layers">
+            <figure [ngClass]="{'visible': layer.checked}" *ngIf="layer.checked">
+              <img alt="" src="{{layer.img}}">
+            </figure>
+          </ng-container>
+        </pinch-zoom>
+      </section>
+      <aside *ngIf="projectActive" class="legend">
+          <figure>
+            <img alt="" src="assets/img/Россия/Легенда.png">
+          </figure>
+      </aside>
+    </div>
+  </div>
+</main>
+<app-footer *ngIf="!projectActive"></app-footer>
