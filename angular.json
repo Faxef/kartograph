@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "Kartograph": {
+    "kartograph": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/Kartograph",
+            "outputPath": "dist/kartograph",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -62,18 +62,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "Kartograph:build"
+            "browserTarget": "kartograph:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "Kartograph:build:production"
+              "browserTarget": "kartograph:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "Kartograph:build"
+            "browserTarget": "kartograph:build"
           }
         },
         "test": {
@@ -110,18 +110,22 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "Kartograph:serve"
+            "devServerTarget": "kartograph:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "Kartograph:serve:production"
+              "devServerTarget": "kartograph:serve:production"
             }
           }
+        },
+        "deploy": {
+          "builder": "angular-cli-ghpages:deploy",
+          "options": {}
         }
       }
     }
   },
-  "defaultProject": "Kartograph",
+  "defaultProject": "kartograph",
   "cli": {
     "analytics": false
   },
