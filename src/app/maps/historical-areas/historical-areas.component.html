@@ -8,13 +8,14 @@
       <aside [ngClass]="{'collapsed': collapsed}">
         <nav *ngIf="!collapsed">
           <ul>
-            <li class="drop">
+            <li (click)="show()" [ngClass]="{'active':active}" class="drop maps">
               <div class="link">
 									<span class="icon">
 										<img alt="" src="assets/img/icons/list_icon.png">
 									</span>
-                <a href="">Список карт</a>
+                <a>Список карт</a>
               </div>
+              <app-maps-list *ngIf="active"></app-maps-list>
             </li>
             <li (click)="projector($event)" [ngClass]="{'active': projectActive}">
 								<span class="icon">
@@ -22,12 +23,6 @@
 								</span>
               <a href="">Легенда карты</a>
             </li>
-<!--            <li (click)="projector($event)" [ngClass]="{'active': projectActive}">-->
-<!--								<span class="icon">-->
-<!--									<img alt="" src="assets/img/icons/proektor_icon.png">-->
-<!--								</span>-->
-<!--              <a href="">Проектор</a>-->
-<!--            </li>-->
             <li>
 								<span class="icon">
 									<img alt="" src="assets/img/icons/info_icon.png">
@@ -62,11 +57,7 @@
 									<img alt="" src="assets/img/icons/legend_icon.png">
 								</span>
             </li>
-            <li (click)="projector($event)" [ngClass]="{'active': projectActive}">
-								<span class="icon">
-									<img alt="" src="assets/img/icons/proektor_icon.png">
-								</span>
-            </li>
+
             <li>
 								<span class="icon">
 									<img alt="" src="assets/img/icons/info_icon.png">
@@ -96,7 +87,7 @@
               (save)="save($event)"
               [drawingSizes]="{'medium': 10, 'small': 5}"
               enableTooltip="false"
-              src="assets/img/Историко-культурные районы мира/Историко-культурные районы мира.pn"></image-drawing>
+              src="assets/img/Историко-культурные районы мира/Историко-культурные районы мира.png"></image-drawing>
           </figure>
         </pinch-zoom>
       </section>

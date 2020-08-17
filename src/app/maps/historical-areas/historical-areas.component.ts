@@ -9,6 +9,8 @@ export class HistoricalAreasComponent implements OnInit {
   // Заголовок
   title = 'Историко-культурные районы мира';
 
+  active = false;
+
   projectActive: boolean;
   collapsed: boolean;
 
@@ -41,4 +43,7 @@ export class HistoricalAreasComponent implements OnInit {
     console.log($event);
   }
 
+  show() {
+    this.active = !this.active;
+  }
 }

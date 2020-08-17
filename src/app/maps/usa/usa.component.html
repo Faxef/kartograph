@@ -8,13 +8,14 @@
       <aside [ngClass]="{'collapsed': collapsed}">
         <nav *ngIf="!collapsed">
           <ul>
-            <li class="drop">
+            <li (click)="show()" [ngClass]="{'active':active}" class="drop maps">
               <div class="link">
 									<span class="icon">
 										<img alt="" src="assets/img/icons/list_icon.png">
 									</span>
-                <a href="">Список карт</a>
+                <a>Список карт</a>
               </div>
+              <app-maps-list *ngIf="active"></app-maps-list>
             </li>
             <li class="layers drop">
               <div class="link">
@@ -30,12 +31,12 @@
                     <label for="{{layer.name}}">{{layer.name}}</label>
                   </div>
                 </li>
-                <li>
-                  <div class="input_group">
-                    <input [(ngModel)]="conqustador.checked" id="{{conqustador.name}}" type="checkbox">
-                    <label for="{{conqustador.name}}">{{conqustador.name}}</label>
-                  </div>
-                </li>
+<!--                <li>-->
+<!--                  <div class="input_group">-->
+<!--                    <input [(ngModel)]="conqustador.checked" id="{{conqustador.name}}" type="checkbox">-->
+<!--                    <label for="{{conqustador.name}}">{{conqustador.name}}</label>-->
+<!--                  </div>-->
+<!--                </li>-->
               </ul>
             </li>
             <li (click)="projector($event)" [ngClass]="{'active': projectActive}">
@@ -44,12 +45,7 @@
 								</span>
               <a href="">Легенда карты</a>
             </li>
-            <!--            <li (click)="projector($event)" [ngClass]="{'active': projectActive}">-->
-            <!--								<span class="icon">-->
-            <!--									<img alt="" src="assets/img/icons/proektor_icon.png">-->
-            <!--								</span>-->
-            <!--              <a href="">Проектор</a>-->
-            <!--            </li>-->
+
             <li>
 								<span class="icon">
 									<img alt="" src="assets/img/icons/info_icon.png">
@@ -91,11 +87,6 @@
 									<img alt="" src="assets/img/icons/legend_icon.png">
 								</span>
             </li>
-            <li (click)="projector($event)" [ngClass]="{'active': projectActive}">
-								<span class="icon">
-									<img alt="" src="assets/img/icons/proektor_icon.png">
-								</span>
-            </li>
             <li>
 								<span class="icon">
 									<img alt="" src="assets/img/icons/info_icon.png">
@@ -120,6 +111,11 @@
           <figure class="mainMap">
             <img alt="" src="assets/img/США/Основа.png">
           </figure>
+          <ng-container *ngFor="let layer of layers">
+            <figure *ngIf="layer.checked" [ngClass]="{'visible': layer.checked}">
+              <img alt="" src="{{layer.img}}">
+            </figure>
+          </ng-container>
           <figure [ngClass]="{'show': isEdit}" class=" canvas">
             <image-drawing
               (save)="save($event)"
@@ -127,21 +123,15 @@
               enableTooltip="false"
               src="assets/img/США/Основа.png"></image-drawing>
           </figure>
-          <ng-container *ngFor="let layer of layers">
-            <figure *ngIf="layer.checked" [ngClass]="{'visible': layer.checked}">
-              <img alt="" src="{{layer.img}}">
-            </figure>
-          </ng-container>
         </pinch-zoom>
       </section>
-      <aside *ngIf="projectActive || conqustador.checked"
-             [ngClass]="{'legendConqstadors': projectActive && conqustador.checked}" class="legend">
+      <aside *ngIf="projectActive" class="legend">
         <figure *ngIf="projectActive">
           <img alt="" src="assets/img/США/Легенда.png">
         </figure>
-        <figure *ngIf="conqustador.checked">
-          <img alt="" src="assets/img/США/Конкистадоры.png">
-        </figure>
+<!--        <figure *ngIf="conqustador.checked">-->
+<!--          <img alt="" src="assets/img/США/Конкистадоры.png">-->
+<!--        </figure>-->
       </aside>
     </div>
   </div>

@@ -9,6 +9,8 @@ export class PolandComponent implements OnInit {
   // Заголовок
   title = 'Административно-территориальное устройство Польши';
 
+  active = false;
+
   projectActive: boolean;
   collapsed: boolean;
 
@@ -19,11 +21,11 @@ export class PolandComponent implements OnInit {
       img: 'assets/img/Польша/Админ центры.png',
     },
     {
-      name: 'Границы федеративных образований',
+      name: 'Границы административных образований',
       img: 'assets/img/Польша/Границы федерат образований.png',
     },
     {
-      name: 'Названия федеративных образований',
+      name: 'Названия административных образований',
       img: 'assets/img/Польша/Названия федерат образований.png',
     },
   ];
@@ -55,4 +57,7 @@ export class PolandComponent implements OnInit {
     console.log($event);
   }
 
+  show() {
+    this.active = !this.active;
+  }
 }

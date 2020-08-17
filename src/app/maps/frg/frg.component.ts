@@ -1,58 +1,63 @@
 import {Component, OnInit} from '@angular/core';
 
 @Component({
-  selector: 'app-largest-states',
-  templateUrl: './frg.component.html',
-  styleUrls: ['./frg.component.scss']
+    selector: 'app-largest-states',
+    templateUrl: './frg.component.html',
+    styleUrls: ['./frg.component.scss']
 })
 export class FrgComponent implements OnInit {
-  // Заголовок
-  title = 'Административно-территориальное устройство ФРГ';
+    // Заголовок
+    title = 'Административно-территориальное устройство ФРГ';
 
-  projectActive: boolean;
-  collapsed: boolean;
+    projectActive: boolean;
+    active = false;
 
-  // Массив слоев
-  layers = [
-    {
-      name: 'Административные центры',
-      img: 'assets/img/ФРГ/Административные центры.png',
-    },
-    {
-      name: 'Границы федеративных образований',
-      img: 'assets/img/ФРГ/Границы федерат образований.png',
-    },
-    {
-      name: 'Названия федеративных образований',
-      img: 'assets/img/ФРГ/Названия федерат образований.png',
-    },
-  ];
-  isEdit: boolean;
+    collapsed: boolean;
 
-  constructor() {
-  }
+    // Массив слоев
+    layers = [
+        {
+            name: 'Административные центры',
+            img: 'assets/img/ФРГ/Административные центры.png',
+        },
+        {
+            name: 'Границы административных образований',
+            img: 'assets/img/ФРГ/Границы федерат образований.png',
+        },
+        {
+            name: 'Названия административных образований',
+            img: 'assets/img/ФРГ/Названия федерат образований.png',
+        },
+    ];
+    isEdit: boolean;
 
-  ngOnInit(): void {
-  }
+    constructor() {
+    }
 
-  projector(e) {
-    e.preventDefault();
-    this.projectActive = !this.projectActive;
-  }
+    ngOnInit(): void {
+    }
 
-  collapse(e) {
-    e.preventDefault();
-    this.collapsed = !this.collapsed;
-  }
+    projector(e) {
+        e.preventDefault();
+        this.projectActive = !this.projectActive;
+    }
 
-  edit(e) {
-    e.preventDefault();
-    this.isEdit = !this.isEdit;
-    console.log(this.isEdit);
-  }
+    collapse(e) {
+        e.preventDefault();
+        this.collapsed = !this.collapsed;
+    }
 
-  save($event: Blob) {
-    console.log($event);
-  }
+    edit(e) {
+        e.preventDefault();
+        this.isEdit = !this.isEdit;
+        console.log(this.isEdit);
+    }
 
+    save($event: Blob) {
+        console.log($event);
+    }
+
+    show() {
+        this.active = !this.active;
+    }
 }

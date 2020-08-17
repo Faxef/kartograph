@@ -1,0 +1,30 @@
+main .container-fluid .main_wrapper aside.legend {
+  width: 45%;
+}
+main .container-fluid .main_wrapper section.map figure.visible.zi2 {
+  z-index: 3;
+}
+main .container-fluid .main_wrapper section.map figure.show.canvas {
+  z-index: 4;
+}
+main .container-fluid .main_wrapper aside nav > ul > li.drop.information .dropdown {
+  position: absolute;
+  left: 100%;
+  width: 350px;
+  bottom: 0;
+  background-color: #FFFFFF;
+  display: none;
+  opacity: 0;
+}
+main .container-fluid .main_wrapper aside nav > ul > li.drop.information.active a {
+  color: orange;
+}
+main .container-fluid .main_wrapper aside nav > ul > li.drop.information:hover .dropdown {
+  display: block;
+  opacity: 1;
+}
+.informationMap {
+  z-index: 9;
+  opacity: 1 !important;
+  position: relative !important;
+}

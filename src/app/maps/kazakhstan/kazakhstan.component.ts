@@ -9,6 +9,8 @@ export class KazakhstanComponent implements OnInit {
   // Заголовок
   title = 'Административно-территориальное устройство Казахстана';
 
+  active = false;
+
   projectActive: boolean;
   collapsed: boolean;
 
@@ -19,11 +21,11 @@ export class KazakhstanComponent implements OnInit {
       img: 'assets/img/Казахстан/Админ центры.png',
     },
     {
-      name: 'Границы федеративных образований',
+      name: 'Границы административных образований',
       img: 'assets/img/Казахстан/Границы федерат образований.png',
     },
     {
-      name: 'Названия федеративных образований',
+      name: 'Названия административных образований',
       img: 'assets/img/Казахстан/Названия федерат образований.png',
     },
   ];
@@ -55,4 +57,7 @@ export class KazakhstanComponent implements OnInit {
     console.log($event);
   }
 
+  show() {
+    this.active = !this.active;
+  }
 }

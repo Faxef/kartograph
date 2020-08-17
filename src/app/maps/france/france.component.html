@@ -8,13 +8,14 @@
       <aside [ngClass]="{'collapsed': collapsed}">
         <nav *ngIf="!collapsed">
           <ul>
-            <li class="drop">
+            <li (click)="show()" [ngClass]="{'active':active}" class="drop maps">
               <div class="link">
 									<span class="icon">
 										<img alt="" src="assets/img/icons/list_icon.png">
 									</span>
-                <a href="">Список карт</a>
+                <a>Список карт</a>
               </div>
+              <app-maps-list *ngIf="active"></app-maps-list>
             </li>
             <li class="layers drop">
               <div class="link">
@@ -38,12 +39,6 @@
 								</span>
               <a href="">Легенда карты</a>
             </li>
-<!--            <li (click)="projector($event)" [ngClass]="{'active': projectActive}">-->
-<!--								<span class="icon">-->
-<!--									<img alt="" src="assets/img/icons/proektor_icon.png">-->
-<!--								</span>-->
-<!--              <a href="">Проектор</a>-->
-<!--            </li>-->
             <li>
 								<span class="icon">
 									<img alt="" src="assets/img/icons/info_icon.png">
@@ -85,17 +80,13 @@
 									<img alt="" src="assets/img/icons/legend_icon.png">
 								</span>
             </li>
-            <li (click)="projector($event)" [ngClass]="{'active': projectActive}">
-								<span class="icon">
-									<img alt="" src="assets/img/icons/proektor_icon.png">
-								</span>
-            </li>
+
             <li>
 								<span class="icon">
 									<img alt="" src="assets/img/icons/info_icon.png">
 								</span>
             </li>
-            <li [ngClass]="{'active': isEdit}" (click)="edit($event)">
+            <li (click)="edit($event)" [ngClass]="{'active': isEdit}">
 								<span class="icon">
 									<img alt="" src="assets/img/icons/edit_icon.png">
 								</span>
@@ -114,6 +105,11 @@
           <figure class="mainMap">
             <img alt="" src="assets/img/Франция/Основа.png">
           </figure>
+          <ng-container *ngFor="let layer of layers">
+            <figure *ngIf="layer.checked" [ngClass]="{'visible': layer.checked}">
+              <img alt="" src="{{layer.img}}">
+            </figure>
+          </ng-container>
           <figure [ngClass]="{'show': isEdit}" class=" canvas">
             <image-drawing
               (save)="save($event)"
@@ -121,17 +117,12 @@
               enableTooltip="false"
               src="assets/img/Франция/Основа.png"></image-drawing>
           </figure>
-          <ng-container *ngFor="let layer of layers">
-            <figure [ngClass]="{'visible': layer.checked}" *ngIf="layer.checked">
-              <img alt="" src="{{layer.img}}">
-            </figure>
-          </ng-container>
         </pinch-zoom>
       </section>
       <aside *ngIf="projectActive" class="legend">
-          <figure>
-            <img alt="" src="assets/img/Франция/Легенда.png">
-          </figure>
+        <figure>
+          <img alt="" src="assets/img/Франция/Легенда.png">
+        </figure>
       </aside>
     </div>
   </div>

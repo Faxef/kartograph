@@ -7,7 +7,7 @@ import {Component, OnInit} from '@angular/core';
 })
 export class GreatBritainComponent implements OnInit {
   // Заголовок
-  title = 'Административно-территориальное устройство Великобритани';
+  title = 'Административно-территориальное устройство Великобритании';
 
   projectActive: boolean;
   collapsed: boolean;
@@ -19,15 +19,16 @@ export class GreatBritainComponent implements OnInit {
       img: 'assets/img/Великобритания/Админ центры.png',
     },
     {
-      name: 'Границы федеративных образований',
+      name: 'Границы административных образований',
       img: 'assets/img/Великобритания/Границы федерат образований.png',
     },
     {
-      name: 'Названия федеративных образований',
+      name: 'Названия административных образований',
       img: 'assets/img/Великобритания/Названия федерат образований.png',
     },
   ];
   isEdit: boolean;
+  active = false;
 
   constructor() {
   }
@@ -54,5 +55,7 @@ export class GreatBritainComponent implements OnInit {
   save($event: Blob) {
     console.log($event);
   }
-
+  show() {
+    this.active = !this.active;
+  }
 }

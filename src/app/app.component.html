@@ -1,1 +1,2 @@
-<router-outlet></router-outlet>
+<div *ngIf="mobile" class="errorMobile">Откройте сайт с компьютера</div>
+<router-outlet *ngIf="!mobile"></router-outlet>

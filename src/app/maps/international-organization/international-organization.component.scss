@@ -1,0 +1,9 @@
+main .container-fluid .main_wrapper aside nav > ul > li.drop > .dropdown {
+  max-height: 540px;
+  overflow-y: scroll;
+  position: relative;
+  overflow-x: hidden;
+}
+main .container-fluid .main_wrapper section.map figure img {
+  background: #fff;
+}

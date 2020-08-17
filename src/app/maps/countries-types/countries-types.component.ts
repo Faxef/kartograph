@@ -10,7 +10,8 @@ export class CountriesTypesComponent implements OnInit {
   title = 'Типы стран';
 
   isChecked;
-  isCheckedId;
+
+  active = false;
 
   projectActive: boolean;
   collapsed: boolean;
@@ -20,18 +21,20 @@ export class CountriesTypesComponent implements OnInit {
     {
       name: 'Уровень человеческого развития',
       img: 'assets/img/Типы стран/Уровень человеческого развития/Уровень человеческого развития.png',
-      legend: 'assets/img/Типы стран/Уровень человеческого развития/Легенда.png'
+      legend: 'assets/img/Типы стран/Уровень человеческого развития/Легенда.png', checked: true
     },
     {
       name: 'Валовой внутренний продукт',
       img: 'assets/img/Типы стран/Валовой внутренний продукт/Валовой внутренний продукт.png',
-      legend: 'assets/img/Типы стран/Валовой внутренний продукт/Легенда.png'
+      legend: 'assets/img/Типы стран/Валовой внутренний продукт/Легенда.png', checked: false
     },
     {
       name: 'Внутриконтинентальные страны мира',
       img: 'assets/img/Типы стран/Внутриконтинентальные страны мира/Внутриконтинентальные страны мира.png',
+      legend: 'assets/img/Типы стран/Внутриконтинентальные страны мира/Легенда.png', checked: false
     },
   ];
+  isCheckedId = this.layers[0].name;
   isEdit: boolean;
 
   constructor() {
@@ -61,7 +64,19 @@ export class CountriesTypesComponent implements OnInit {
   }
 
   onChange(e) {
-    this.isChecked = !this.isChecked;
-    this.isCheckedId = e.target.id;
+    console.log(e);
+    this.layers.map(layer => {
+      if (layer.name === e.name) {
+        e.checked = true;
+        this.isChecked = e.checked;
+        this.isCheckedId = e.name;
+      } else {
+        layer.checked = false;
+      }
+    });
+  }
+
+  show() {
+    this.active = !this.active;
   }
 }

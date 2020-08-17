@@ -9,6 +9,8 @@ export class UkraineComponent implements OnInit {
   // Заголовок
   title = 'Административно-территориальное устройство Украины';
 
+  active = false;
+
   projectActive: boolean;
   collapsed: boolean;
 
@@ -19,11 +21,11 @@ export class UkraineComponent implements OnInit {
       img: 'assets/img/Украина/Админ центры.png',
     },
     {
-      name: 'Границы федеративных образований',
+      name: 'Границы административных образований',
       img: 'assets/img/Украина/Границы федерат образований.png',
     },
     {
-      name: 'Названия федеративных образований',
+      name: 'Названия административных образований',
       img: 'assets/img/Украина/Названия федерат образований.png',
     },
   ];
@@ -55,4 +57,7 @@ export class UkraineComponent implements OnInit {
     console.log($event);
   }
 
+  show() {
+    this.active = !this.active;
+  }
 }

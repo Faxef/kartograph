@@ -9,6 +9,8 @@ export class RussiaComponent implements OnInit {
   // Заголовок
   title = 'Административно-территориальное устройство России';
 
+  active = false;
+
   projectActive: boolean;
   collapsed: boolean;
 
@@ -19,11 +21,11 @@ export class RussiaComponent implements OnInit {
       img: 'assets/img/Россия/Админ центры.png',
     },
     {
-      name: 'Границы федеративных образований',
+      name: 'Границы административных образований',
       img: 'assets/img/Россия/Границы федерат образований.png',
     },
     {
-      name: 'Названия федеративных образований',
+      name: 'Названия административных образований',
       img: 'assets/img/Россия/Названия федерат образований.png',
     },
   ];
@@ -53,6 +55,10 @@ export class RussiaComponent implements OnInit {
 
   save($event: Blob) {
     console.log($event);
+  }
+
+  show() {
+    this.active = !this.active;
   }
 
 }

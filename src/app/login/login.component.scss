@@ -1,0 +1,97 @@
+.card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100%;
+
+  .card_wrapper {
+    background-color: #fff;
+    width: 450px;
+
+    .card__header {
+      text-align: center;
+      padding: 10px 20px;
+      margin-bottom: 0;
+      color: #fff;
+      background-color: #7688cd;
+      border-bottom: 1px solid rgba(0, 0, 0, .125);
+      font-size: 1.5rem;
+    }
+
+    .card__body {
+      padding: 10px 20px;
+
+      form {
+        .alert {
+          position: relative;
+
+          h4 {
+            color: #93545a;
+            background-color: #f8d7da;
+            border-color: #f5c6cb;
+            padding: 10px;
+          }
+
+          .close {
+            position: absolute;
+            right: 10px;
+            top: 8px;
+            line-height: 1;
+            font-size: 24px;
+            cursor: pointer;
+          }
+        }
+
+        .form-group {
+          margin: 10px 0;
+
+          &.button {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 20px;
+
+            input[type = "submit"] {
+              color: #fff;
+              background-color: #7688cd;
+              border-color: #007bff;
+              font-weight: 400;
+              text-align: center;
+              vertical-align: middle;
+              -webkit-user-select: none;
+              -moz-user-select: none;
+              -ms-user-select: none;
+              user-select: none;
+              border: 1px solid transparent;
+              border-top-color: transparent;
+              border-right-color: transparent;
+              border-bottom-color: transparent;
+              border-left-color: transparent;
+              padding: .375rem .75rem;
+              font-size: 1rem;
+              line-height: 1.5;
+              border-radius: .25rem;
+              transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+            }
+          }
+
+          .form-control {
+            display: block;
+            width: 100%;
+            height: calc(1.5em + .75rem + 2px);
+            padding: .375rem .75rem;
+            font-size: 1rem;
+            font-weight: 400;
+            line-height: 1.5;
+            color: #495057;
+            background-color: #fff;
+            background-clip: padding-box;
+            border: 1px solid #ced4da;
+            border-radius: .25rem;
+            transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+          }
+        }
+      }
+    }
+  }
+}

@@ -9,6 +9,8 @@ export class ItalyComponent implements OnInit {
   // Заголовок
   title = 'Административно-территориальное устройство Италии';
 
+  active = false;
+
   projectActive: boolean;
   collapsed: boolean;
 
@@ -19,11 +21,11 @@ export class ItalyComponent implements OnInit {
       img: 'assets/img/Италия/Админ центры.png',
     },
     {
-      name: 'Границы федеративных образований',
+      name: 'Границы административных образований',
       img: 'assets/img/Италия/Границы федерат образований.png',
     },
     {
-      name: 'Названия федеративных образований',
+      name: 'Названия административных образований',
       img: 'assets/img/Италия/Названия федерат образований.png',
     },
   ];
@@ -55,4 +57,7 @@ export class ItalyComponent implements OnInit {
     console.log($event);
   }
 
+  show() {
+    this.active = !this.active;
+  }
 }

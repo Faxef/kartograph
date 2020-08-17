@@ -9,6 +9,8 @@ export class UsaComponent implements OnInit {
   // Заголовок
   title = 'Административно-территориальное устройство США';
 
+  active = false;
+
   projectActive: boolean;
   collapsed: boolean;
   conqstadorsActive: boolean;
@@ -19,19 +21,19 @@ export class UsaComponent implements OnInit {
       img: 'assets/img/США/Административные центры.png',
     },
     {
-      name: 'Границы федеративных образований',
+      name: 'Границы административных образований',
       img: 'assets/img/США/Границы федерат образований.png',
     },
     {
-      name: 'Названия федеративных образований',
+      name: 'Названия административных образований',
       img: 'assets/img/США/Названия федерат образований.png',
     },
   ];
-  conqustador = {
-    name: 'Конкистадоры',
-    img: 'assets/img/Этапы формирования политической карты мира/Мир в эпоху великих географических открытий/Конкистадоры.png',
-    checked: false
-  };
+  // conqustador = {
+  //   name: 'Конкистадоры',
+  //   img: 'assets/img/Этапы формирования политической карты мира/Мир в эпоху великих географических открытий/Конкистадоры.png',
+  //   checked: false
+  // };
   isEdit: boolean;
 
   constructor() {
@@ -60,4 +62,7 @@ export class UsaComponent implements OnInit {
     console.log($event);
   }
 
+  show() {
+    this.active = !this.active;
+  }
 }
